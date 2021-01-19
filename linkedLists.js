@@ -52,7 +52,7 @@ var removeNthFromEnd = function(head, n) {
 // performing addition on "bubble up" step
 
 // 2. reverse a linked list both intertively and recursively
-
+//iterative
     var reverseList = function(head) {
         let prev = null;
         let on = head;
@@ -64,12 +64,47 @@ var removeNthFromEnd = function(head, n) {
         }
         return prev;
     };
-
+// time complexity -> while loop O(n)
+// space complexity -> O(1)
     // recursive
 
-    var reverseListR = function(head) {
-        
+    var reverseListR = function(on, prev = null) {
+        if (on === null) return prev;
+        let temp = on.next;
+        on.next = prev;
+        return reverseListR(temp, on)
+    };
+
+// time complexity -> while loop O(n)
+// space complexity -> recurisve are saved in stack frames O(1)
+
+// Linked List Cycle
+// given a linked list, determine if it has a cycle in it
+
+var hasCycle = function(head) {
+    const nodes = new Set();
+    let on = head;
+    while(on !== null) {
+        if(nodes.has(on)) return true;
+        nodes.add(on);
+        on = on.next
     }
+    return false;
+};
 
+// time complexity -> while loop O(n)
+// space complexity -> extra data struc. set O(n)
 
+var hasCycle = function(head) {
+    let slow = head;
+    let fast = head;
+    while(fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow === fast) return true;
+    }
+    return false;
+};
 
+// time complexity ->  O(n)
+// space complexity -> O(1)
