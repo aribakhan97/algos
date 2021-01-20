@@ -91,3 +91,7 @@ var getDepth = function(root) {
 
 // time complexity ->  O(n)2
 // space complexity -> stack frames -> O(n)
+
+// sorting
+// selection sort, insertion sort, and bubble sort take a long time 
+// most optimal are merge sort, heap sort, and quick sort
