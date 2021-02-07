@@ -27,3 +27,14 @@ var moveZeroes = function(nums) {
     }
       return nums
   };
+  // validate binary tree
+  var isValidBST = function(root) {
+    return isValid(root, -Infinity, Infinity);
+    
+    function isValid(root, low, high) {
+        if (!root) return true;
+        return (root.val > low &&
+                root.val < high &&
+                isValid(root.left, low, root.val) &&
+                isValid(root.right, root.val, high));
+    }
