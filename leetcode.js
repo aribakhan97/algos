@@ -11,3 +11,19 @@ function removeDuplicates(nums) {
     nums = nums.slice(0, numCount)
     return numCount;
 }
+
+// moves zeroes 
+var moveZeroes = function(nums) {
+    let j = 0, i = 0 
+    while(i < nums.length && j < nums.length){
+        if(nums[i] === 0){
+            if(nums[j] !== 0 && j > i){
+                nums[i] = nums[j]
+                nums[j] = 0
+                i++
+            }
+            j++
+        }else i++
+    }
+      return nums
+  };
