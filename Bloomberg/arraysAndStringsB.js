@@ -78,3 +78,22 @@ var threeSum = function(nums) {
 
 // valid anagram
 return s.split("").sort().join("") === t.split("").sort().join("")
+
+// algo expert
+function smallestDifference(arrayOne, arrayTwo) {
+	arrayOne.sort((a, b) => a - b);
+	arrayTwo.sort((a, b) => a - b);
+	let idxOne = 0;
+	let idxTwo = 0;
+	
+	let smallest = Infinity;
+	let current = Infinity;
+	let smallestPair = [];
+	while (idxOne < arrayOne.length && idxTwo < arrayTwo.length) {
+		let firstNum = arrayOne[idxOne];
+		if (firstNum < secondNum) {
+			
+		}
+	}
+}
+
