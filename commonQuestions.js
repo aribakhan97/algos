@@ -437,3 +437,163 @@ function minSwaps(data) {
  };
 
  // longest common prefix 
+
+ function longestCommonPrefix(strs) {
+     'use strict';
+     if (strs === underfined || strs.length === 0) {return '';}
+
+     return strs.reduce((prev, next) => {
+         let i = 0;
+         while (prev[i] && next[i] && prev[i] === next[i]) i++;
+         return prev.slice(0, i);
+     })
+ };
+
+ // threeSum
+
+ function threeSum(array, targetSum) {
+     array.sort((a, b) => a -b) 
+     const triplets = [];
+     for (let i = 0; i < array.length - 2; i++) {
+         let left = i + 1;
+         let right = array.length - 1;
+         while (left < right) {
+             const currentSum = array[i] + array[left] + array[right];
+             if (currentSum === targetSum) {
+                 triplets.push([array[i], array[left], array[right]]);
+                 left++;
+                 right++
+             } else if (currentSum < targetSum) {
+                 left ++
+             } else if (currentSum > targetSum) {
+                 right--
+             }
+         }
+     }
+     return triplets;
+ } 
+
+ // valid parenthesis
+
+ function isValid(s) {
+     let temp = [];
+     let map = {
+        '(': ')',
+        '{': '}',
+        '[': ']',
+     }
+     for (let i = 0; i < s.length; i++) {
+         if(s[i] === '(' || s[i] === '{' || s[i] === '[')
+         temp.push(s[i]);
+         else if(map[temp.pop()] !== s[i]) {
+             return false;
+         }
+     }
+     if (temp.length > 0)
+        return false;
+     else 
+     return true;
+ };
+
+ // merge two sorted lists
+
+ function mergeTwoLists(l1, l2) {
+     let prehead = {next: null}
+     let p = prehead
+     let p1 = l1
+     let p2 = l2
+     while(p1 && p2) {
+         let pSel 
+         if(p1.val > p2.val) {
+             pSel = p1
+             p1 = p1.next
+         } else {
+             letpSel
+             pSel = p2
+             p2 = p2.next
+         } 
+         p.next = pSel
+         p = pSel
+     }
+     p.next = p1 || p2
+     return prehead.next
+ }
+
+ // maxSubArray
+
+ function maxSubArray(nums) {
+     let solution = nums[0];
+     for (let i = 0; i < nums.length; i++) {
+         nums[i] = Math.max(nums[i], nums[i], nums[i -1]);
+         solution = Math.max(solution, nums[i]);
+     }
+     return solution;
+ }
+
+ // merge sorted array
+
+ function merge(nums1, m, nums2, n) {
+     let first = m - 1;
+     let second = n - 1;
+
+     for (let i = m + n - 1; i >= 0; i--) {
+         if (second < 0) {
+             break;
+         }
+         if(nums1[first] > nums2[second]) {
+             nums1[i] = nums1[first];
+             first--;
+         } else {
+             nums1[i] = nums2[second];
+             second--;
+         }
+     }
+ }
+
+ function isPalindrome(input) {
+     let start = 0;
+     let end = input.length - 1;
+     while (start < end) {
+         let s = input.charCodeAt(start)
+         let e = input.charCodeAt(end)
+
+         if(!isLetter(s)) {
+             start++
+             continue
+         }
+         if(!isLetter(e)) {
+             end--
+             continue
+         }
+         if (toLowerCase(s) !== toLowerCase(e)) {
+             return false
+         }
+         start++
+         end--
+     }
+     return true
+ };
+
+    let isLetter = function(code) {
+        if (((code >= 48) && (code <= 57))
+        || ((code >= 65) && (code <=90)) 
+        || ((code >= 97) && (code <= 122))) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    let toLowerCase = function(code) {
+        if (code >= 65 && code <= 90) {
+            return code + 32
+        } 
+        else {
+            return code
+        }
+    }
+
+
+
+
+
