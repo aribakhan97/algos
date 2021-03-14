@@ -593,7 +593,102 @@ function minSwaps(data) {
         }
     }
 
+    // gas station
+
+    function canCompleteCircut(gas, cost) {
+        let curTank = 0, totalTank = 0, pos = 0;
+        for (let i = 0; i < gas.length; i++) {
+            curTank += gas[i] - cost[i];
+            totalTank += gas[i] - cost[i];
+            if (curTank < 0) {
+                curTank = 0;
+                pos = i + 1
+            }
+        }
+        return totalTank < 0 ? - 1: pos;
+    }
+// reverse linked list
+
+    function reverse(head) {
+        let pre = null;
+        while (head) {
+            const next = head.next
+            head.next = pre
+            pre = head
+            head = next
+        }
+        return pre
+    };
+
+    function maximalSquare(matrix) {
+        if (!matrix.length) return 0;
+        let dp = new Array(matrix.length + 1).fill(0).map(() => 
+        new Array(matrix[0].length + 1).fill(0));
+        let max = 0;
+        for (let r = 1; r < dp.length; r++){
+            for (let c = 1; c < dp[0].length; c++) {
+                if (matrix[r - 1][c - 1] != 0) {
+                    dp[r][c] = Math.min(dp[r][c - 1], dp[r - 1][c], dp[r - 1][c - 1]) + 1;
+                    max = Math.max(dp[r][c], max);
+                }
+            }
+        }
+        return max**2
+    }
 
 
+// sliding window 
 
+    function maxSlidingWindow(nums,k) {
+        const q = [];
+        const res = [];
+        for (let i = 0; i < nums.length; i++){
+            while (q && [q[q.length - 1]] <= nums[i]) {
+                q.pop()
+            }
+            q.push(i)
+            if(q[0] === i - k) {
+                q.shift()
+            }
+            if (i >= k - 1) {
+                res.push(nums[q[0]]);
+            }
+        }
+        return res;
+    };
 
+// three sum smaller
+
+    function threeSumSmaller(nums, target) {
+        nums.sort((a, b) => a - b);
+
+        function twoSumSmaller(startIdx, target) {
+            let count = 0;
+            let l = startIdx
+            let r = nums.length - 1;
+            while (l < r) {
+                if (nums[l] + nums[r] < target) {
+                    count += r - l
+                    l++
+                } else {
+                    r--;
+                }
+            }
+            return count;
+        }
+        let count = 0;
+        for(let i = 0; i < nums.length - 2; i++) {
+            count += twoSumSmaller( i + 1, target - nums[i]);
+        }
+        return count;
+    } 
+
+    // missing number
+
+    function missingNumber(nums) {
+        const res = new Array(nums.length + 1).fill(-1);
+        for(const num of nums) {
+            res[num] = num;
+        }
+        return res.indexOf(-1)
+    }
