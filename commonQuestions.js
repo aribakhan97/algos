@@ -692,3 +692,73 @@ function minSwaps(data) {
         }
         return res.indexOf(-1)
     }
+
+
+    // group anagrams
+
+    function groupAnagrams(strs) {
+        const ht = {};
+        for (let str of strs) {
+            const sorted = str.split('').sort().join('');
+            if(ht[sorted]) ht[sorted].push(str);
+            else ht[sorted] = [str];
+        }
+        return Object.values(ht);
+        // hash table to array or arrays
+    };
+    // time complexity => sort is n log n times n
+    // O(n * (m log m))
+    // space complexity n is keys in hash table O(n)
+
+    // valid palindrome 
+
+// naive solution
+function isPalindrome(s) {
+    return s.split('').reverse().join('') === s;
+};
+
+function isPalindrome(s) {
+    const sanitized =  s.replace(/[^/w]/gi, '').toLowerCase();
+    return s.split('').reverse().join('') === sanitized;
+};
+
+function isPalindrome(s) {
+    const s =  s.replace(/[^/w]/gi, '').toLowerCase();
+    let left = 0;
+    let right = s.length - 1;
+    while (left < right) {
+        if (s[left] !== s[right]) return false;
+        left++;
+        right--;
+    } 
+    return true;
+};
+
+// time complexity => O(n)
+// space complexity => o(1) constant space
+
+// valid parenthesis
+
+function isValid(s) {
+    const stack = [];
+    for(let char of s) {
+        if (char === '(' || char === '[' || char === '{') {
+            stack.push(char);
+        } else {
+            if (stack.length === 0) return false;
+            const last = stack.pop();
+            if (last === '(' && char !== ')') {
+                return false;
+            } else if (last === '[' && char !== ']') {
+                return false;
+            } else if (last === '{' && char !== '}') {
+                return false
+            }
+        }
+    }
+    if (stack.length) {
+        return false;
+    } else {
+        return true;
+    }
+};
