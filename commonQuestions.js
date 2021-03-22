@@ -800,3 +800,17 @@ function searchInsert(nums, target) {
     }
     
 };
+
+function groupAnagrams(strs) {
+    const ht = {};
+    for (let str of strs) {
+        const sorted = str.split('').sort().join('');
+        if(ht[sorted]) ht[sorted].push(str);
+        else ht[sorted] = [str];
+    }
+    return Object.values(ht);
+    // hash table to array or arrays
+};
+// time complexity => sort is n log n times n
+// O(n * (m log m))
+// space complexity n is keys in hash table O(n)
