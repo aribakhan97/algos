@@ -765,7 +765,24 @@ function isValid(s) {
 // time complexity => O(n)
 // space complextiy => O(n) linear 
 
-// search insert position 
+// search insert position  
+
+function searchInsert(nums, target) {
+    let lo = 0;
+    let hi = nums.length -1;
+    while(lo <= high) {
+        let mid = Math.floor((hi + lo) / 2)
+        let midVal = nums[mid];
+        if (taget === midVal) {
+        return mid;
+    } else if (target > midVal) {
+        lo = mid + 1;
+        } else {
+            hi = mid - 1;
+        }
+    }
+    
+};
 
 function searchInsert(nums, target) {
     let lo = 0;
