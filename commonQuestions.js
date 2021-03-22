@@ -741,19 +741,18 @@ function isPalindrome(s) {
 
 function isValid(s) {
     const stack = [];
+    const pairs  = {
+        '(': ')',
+        '[': ']',
+        '{': '}',
+    };
     for(let char of s) {
-        if (char === '(' || char === '[' || char === '{') {
+        if (char in pairs) {
             stack.push(char);
         } else {
             if (stack.length === 0) return false;
             const last = stack.pop();
-            if (last === '(' && char !== ')') {
-                return false;
-            } else if (last === '[' && char !== ']') {
-                return false;
-            } else if (last === '{' && char !== '}') {
-                return false
-            }
+            if (pairs[last] !== char) return false;
         }
     }
     if (stack.length) {
@@ -761,4 +760,26 @@ function isValid(s) {
     } else {
         return true;
     }
+};
+
+// time complexity => O(n)
+// space complextiy => O(n) linear 
+
+// search insert position 
+
+function searchInsert(nums, target) {
+    let lo = 0;
+    let hi = nums.length -1;
+    while(lo <= high) {
+        let mid = Math.floor((hi + lo) / 2)
+        let midVal = nums[mid];
+        if (taget === midVal) {
+        return mid;
+    } else if (target > midVal) {
+        lo = mid + 1;
+        } else {
+            hi = mid - 1;
+        }
+    }
+    
 };
