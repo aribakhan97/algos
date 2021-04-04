@@ -814,3 +814,27 @@ function groupAnagrams(strs) {
 // time complexity => sort is n log n times n
 // O(n * (m log m))
 // space complexity n is keys in hash table O(n)
+
+
+
+// 100 students
+// every 3 students is fizz
+// every 5th student is buzz
+// divisible by 3 and 5 write fizzbuzz
+
+function fizzbuzz(students){
+    // iterating thru number of students 
+    for (let i = 1; i <= students.length; i++) {
+        // i = 15 
+        if (i % 3  === 0 && i % 5 !== 0) {
+            console.log("Fizz") }
+        if (i % 5 === 0 && i % 3 !== 0) {
+            console.log("Buzz") }
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log("FizzBuzz")
+                }
+            console.log(i)
+        }
+    }
+
+
